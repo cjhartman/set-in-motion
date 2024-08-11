@@ -1,0 +1,17 @@
+.header-nav {
+  padding: 24px;
+  background-color: #2b2b2b;
+  border-bottom: 1px solid #4b4b4b;
+
+  a {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    color: #aaa;
+
+    &:hover {
+      background-color: #3b3b3b;
+    }
+  }
+}
