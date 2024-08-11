@@ -1,10 +1,13 @@
 import React from "react";
 import { useDrop } from "react-dnd";
+import "./DroppableList.scss";
 
 function DroppableList({
+  title,
   children,
   onDrop,
 }: {
+  title: string;
   children: React.ReactNode;
   onDrop: (id: string) => void;
 }) {
@@ -17,8 +20,11 @@ function DroppableList({
   });
 
   return (
-    <div ref={drop} className={`list ${canDrop ? "can-drop" : ""}`}>
-      {children}
+    <div>
+      <h3>{title}</h3>
+      <div ref={drop} className={`list ${canDrop ? "can-drop" : ""}`}>
+        {children}
+      </div>
     </div>
   );
 }

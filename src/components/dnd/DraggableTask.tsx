@@ -1,11 +1,14 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import "./DraggableTask.scss";
 
 function DraggableTask({
   id,
+  title,
   children,
 }: {
   id: number;
+  title: string;
   children: React.ReactNode;
 }) {
   const [{ isDragging }, drag] = useDrag({
@@ -22,6 +25,7 @@ function DraggableTask({
       className={`task   
       ${isDragging ? "dragging" : ""}`}
     >
+      <div>{title}</div>
       {children}
     </div>
   );
