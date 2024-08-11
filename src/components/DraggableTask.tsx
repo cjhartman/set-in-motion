@@ -5,7 +5,7 @@ function DraggableTask({
   id,
   children,
 }: {
-  id: string;
+  id: number;
   children: React.ReactNode;
 }) {
   const [{ isDragging }, drag] = useDrag({
@@ -20,7 +20,7 @@ function DraggableTask({
     <div
       ref={drag}
       className={`task   
- ${isDragging ? "dragging" : ""}`}
+      ${isDragging ? "dragging" : ""}`}
     >
       {children}
     </div>
