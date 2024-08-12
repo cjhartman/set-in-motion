@@ -4,6 +4,8 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import HeaderNav from "./components/header/HeaderNav";
 import PageLayout from "./components/page-layout/PageLayout";
+import Button from "./components/ui/Button";
+import "./App.scss";
 
 function App() {
   const lists = [
@@ -31,6 +33,10 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <HeaderNav></HeaderNav>
       <PageLayout>
+        <div className="add-list">
+          <Button text="Add List" type="primary" icon="fa-plus"></Button>
+        </div>
+
         <div>
           {lists.map((list) => (
             <DroppableList
