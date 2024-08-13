@@ -1,14 +1,14 @@
-import { DraggableTask } from "./components/dnd/DraggableTask";
-import { DroppableList } from "./components/dnd/DroppableList";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import HeaderNav from "./components/header/HeaderNav";
 import PageLayout from "./components/page-layout/PageLayout";
-import Button from "./components/ui/Button";
+import Button from "./components/ui/button/Button";
 import "./App.scss";
+import { useState } from "react";
+import Lists from "./components/list/Lists";
 
 function App() {
-  const lists = [
+  const initialLists = [
     {
       id: 1,
       title: "To Do",
@@ -29,33 +29,35 @@ function App() {
     { id: 3, title: "Done", tasks: [{ title: "Title 6", id: 6 }] },
   ];
 
+  const [lists] = useState(initialLists);
+  const [isAddingCard, setIsAddButtonDisabled] = useState(false);
+
+  const addList = () => {
+    setIsAddButtonDisabled(true);
+  };
+
+  const handleListSaved = () => {
+    setIsAddButtonDisabled(false);
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <HeaderNav></HeaderNav>
       <PageLayout>
         <div className="add-list">
-          <Button text="Add List" type="primary" icon="fa-plus"></Button>
+          <Button
+            text="Add List"
+            btnStyle="primary"
+            icon="fa-plus"
+            onClick={addList}
+            disabled={isAddingCard}
+          ></Button>
         </div>
-
-        <div>
-          {lists.map((list) => (
-            <DroppableList
-              title={list.title}
-              key={list.id}
-              onDrop={() => console.log("Item Dropped")}
-            >
-              {list.tasks.map((taskId) => (
-                <DraggableTask
-                  title={taskId.title}
-                  key={taskId.id}
-                  id={taskId.id}
-                >
-                  {taskId.id}
-                </DraggableTask>
-              ))}
-            </DroppableList>
-          ))}
-        </div>
+        <Lists
+          lists={lists}
+          isAddingCard={isAddingCard}
+          onListSaved={handleListSaved}
+        ></Lists>
       </PageLayout>
     </DndProvider>
   );

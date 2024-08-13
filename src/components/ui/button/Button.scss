@@ -1,0 +1,51 @@
+.btn {
+  padding: 8px 12px;
+  border-radius: 3px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &-primary {
+    background-color: #acc3a6;
+    color: #1b1b1b;
+    border: 1px solid #acc3a6;
+
+    &:hover {
+      background-color: #c2d3be;
+    }
+
+    &:active {
+      background-color: #a4b5a0;
+    }
+  }
+
+  &-outline {
+    border: 1px solid #acc3a6;
+    color: #acc3a6;
+
+    &:hover {
+      background-color: rgba(#aaa, 0.25);
+    }
+
+    &:active {
+      background-color: rgba(#666, 0.25);
+    }
+  }
+
+  .has-icon {
+    padding-left: 8px;
+  }
+}
+
+button:disabled {
+  opacity: 0.6;
+
+  &:hover {
+    cursor: not-allowed;
+    background-color: #acc3a6;
+  }
+}
