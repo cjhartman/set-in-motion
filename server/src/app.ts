@@ -1,15 +1,16 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import listRoutes from "./routes/listRoutes";
+import cors from "cors";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json());
 
 // Routes
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, TypeScript!");
-});
+app.use("/api/lists", listRoutes);
 
 // Start the server
 app.listen(PORT, () => {
