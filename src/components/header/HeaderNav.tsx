@@ -9,8 +9,10 @@ function HeaderNav() {
   return (
     <header className="header-nav">
       <nav>
-        {navLinks.map((link) => (
-          <a href={link.path}>{link.label}</a>
+        {navLinks.map((link, index) => (
+          <a key={index} href={link.path}>
+            {link.label}
+          </a>
         ))}
       </nav>
     </header>

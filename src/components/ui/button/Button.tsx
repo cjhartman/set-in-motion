@@ -3,13 +3,17 @@ import { FaPlus } from "react-icons/fa6";
 
 function Button({
   text,
-  type,
+  btnStyle: type,
   icon,
+  disabled = false,
+  onClick,
   ...rest
 }: {
   text: string;
-  type: "primary" | "outline";
+  btnStyle: "primary" | "outline";
+  disabled?: boolean;
   icon?: any;
+  onClick?: () => void;
 }) {
   const buttonStyles = {
     primary: "btn-primary",
@@ -23,7 +27,12 @@ function Button({
   const spanClassName = icon ? "has-icon" : "";
 
   return (
-    <button className={`btn ${buttonStyles[type]}`} {...rest}>
+    <button
+      className={`btn ${buttonStyles[type]}`}
+      disabled={disabled}
+      onClick={onClick}
+      {...rest}
+    >
       {icon && iconMap[icon]}
       <span className={spanClassName}>{text}</span>
     </button>
