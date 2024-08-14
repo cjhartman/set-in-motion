@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const createList = async (req, res) => {
+export const createList = async (req: any, res: any) => {
   const { title, description, color } = req.body;
 
   try {
@@ -21,7 +21,7 @@ export const createList = async (req, res) => {
   }
 };
 
-export const getLists = async (req, res) => {
+export const getLists = async (req: any, res: any) => {
   try {
     const lists = await prisma.list.findMany();
     res.json(lists);
