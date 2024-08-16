@@ -1,9 +1,10 @@
 .btn {
-  padding: 8px 12px;
+  padding: 12px 12px;
   border-radius: 3px;
   background-color: transparent;
   border: none;
   font-weight: bold;
+  display: flex;
 
   &:hover {
     cursor: pointer;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import "./DroppableList.scss";
+import Button from "../ui/button/Button";
 
 function DroppableList({
   title,
@@ -21,7 +22,11 @@ function DroppableList({
 
   return (
     <div>
-      <h3>{title}</h3>
+      <div className="list-header">
+        <h3>{title}</h3>
+        <Button btnStyle="outline" icon="fa-ellipsis"></Button>
+      </div>
+
       <div ref={drop} className={`list ${canDrop ? "can-drop" : ""}`}>
         {children}
       </div>
