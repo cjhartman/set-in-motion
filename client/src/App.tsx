@@ -8,28 +8,6 @@ import { useState } from "react";
 import Lists from "./components/list/Lists";
 
 function App() {
-  const initialLists = [
-    {
-      id: 1,
-      title: "To Do",
-      tasks: [
-        { title: "Title 1", id: 1 },
-        { title: "Title 2", id: 2 },
-        { title: "Title 3", id: 3 },
-      ],
-    },
-    {
-      id: 2,
-      title: "In Progress",
-      tasks: [
-        { title: "Title 4", id: 4 },
-        { title: "Title 5", id: 5 },
-      ],
-    },
-    { id: 3, title: "Done", tasks: [{ title: "Title 6", id: 6 }] },
-  ];
-
-  const [lists] = useState(initialLists);
   const [isAddingCard, setIsAddButtonDisabled] = useState(false);
 
   const addList = () => {
@@ -37,6 +15,10 @@ function App() {
   };
 
   const handleListSaved = () => {
+    setIsAddButtonDisabled(false);
+  };
+
+  const handleListCancel = () => {
     setIsAddButtonDisabled(false);
   };
 
@@ -54,9 +36,9 @@ function App() {
           ></Button>
         </div>
         <Lists
-          lists={lists}
           isAddingCard={isAddingCard}
           onListSaved={handleListSaved}
+          onListCancel={handleListCancel}
         ></Lists>
       </PageLayout>
     </DndProvider>

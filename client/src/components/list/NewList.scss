@@ -4,12 +4,13 @@
   border-radius: 5px;
   padding: 16px;
   background-color: #2b2b2b;
-}
 
-.btn-container {
-  text-align: end;
+  .btn-container {
+    justify-content: end;
+    display: flex;
 
-  Button {
-    margin-left: 10px;
+    Button {
+      margin-left: 10px;
+    }
   }
 }
