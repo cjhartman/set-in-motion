@@ -3,4 +3,16 @@
   background-color: #2b2b2b;
   margin: 8px;
   border-radius: 5px;
+  cursor: pointer;
+
+  &-form {
+    &_submit {
+      display: flex;
+      justify-content: end;
+
+      Button {
+        margin-left: 10px;
+      }
+    }
+  }
 }

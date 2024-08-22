@@ -13,7 +13,7 @@ function Button({
   text?: string;
   disabled?: boolean;
   icon?: any;
-  onClick?: () => void;
+  onClick?: (event: React.DOMAttributes<HTMLButtonElement>) => void;
 }) {
   const buttonStyles = {
     primary: "btn-primary",
@@ -27,11 +27,17 @@ function Button({
 
   const spanClassName = icon ? "has-icon" : "";
 
+  const handleClick = (event: any) => {
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
   return (
     <button
       className={`btn ${buttonStyles[type]}`}
       disabled={disabled}
-      onClick={onClick}
+      onClick={handleClick}
       {...rest}
     >
       {icon && iconMap[icon]}
