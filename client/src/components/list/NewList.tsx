@@ -35,6 +35,7 @@ function NewList({ onSave, onCancel }: { onSave: any; onCancel: any }) {
         placeholder="Type List Name..."
         formId="listName"
         value={newList.title}
+        name="title"
         onChange={handleInputChange}
       />
       <div className="btn-container">

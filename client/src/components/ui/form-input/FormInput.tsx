@@ -5,12 +5,14 @@ function FormInput({
   label,
   formId,
   value,
+  name,
   onChange,
 }: {
   placeholder: string;
   label?: string;
   formId: string;
   value?: string;
+  name: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
@@ -21,6 +23,7 @@ function FormInput({
         type="text"
         placeholder={placeholder}
         value={value}
+        name={name}
         onChange={onChange}
         autoComplete="off"
       />
