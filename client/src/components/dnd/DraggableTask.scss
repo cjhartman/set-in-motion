@@ -16,3 +16,12 @@
     }
   }
 }
+
+.hoverable {
+  outline: 0px solid #acc3a6;
+  transition: outline-width 0.05s ease-in-out;
+
+  &:hover {
+    outline-width: 2px;
+  }
+}

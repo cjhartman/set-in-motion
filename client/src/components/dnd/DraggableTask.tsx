@@ -75,7 +75,7 @@ function DraggableTask({
       {!addNewTask ? (
         <div
           ref={drag}
-          className={`task
+          className={`task hoverable
       ${isDragging ? "dragging" : ""}`}
           onClick={handleOpenDrawer}
         >
