@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "client": "npm start --prefix client",
-    "server": "npm start --prefix server",
+    "app": "npm start --prefix client",
+    "api": "npm start --prefix server",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
     "start:client": "npm run start --prefix client",
-    "start:server": "npm run start --prefix server"
+    "start:server": "npm run start --prefix server",
+    "c": "client",
+    "s": "server"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"

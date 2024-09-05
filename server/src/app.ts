@@ -1,6 +1,7 @@
 import express from "express";
 import listRoutes from "./routes/listRoutes";
 import cors from "cors";
+import taskRoutes from "./routes/taskRoutes";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/lists", listRoutes);
+app.use("/api/tasks", taskRoutes);
 
 // Start the server
 app.listen(PORT, () => {

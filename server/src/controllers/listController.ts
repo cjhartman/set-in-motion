@@ -23,7 +23,11 @@ export const createList = async (req: any, res: any) => {
 
 export const getLists = async (req: any, res: any) => {
   try {
-    const lists = await prisma.list.findMany();
+    const lists = await prisma.list.findMany({
+      include: {
+        tasks: true,
+      },
+    });
     res.json(lists);
   } catch (error) {
     console.error(error);
