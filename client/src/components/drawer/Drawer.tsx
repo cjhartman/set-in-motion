@@ -35,9 +35,9 @@ function SideDrawer({ formType }: { formType: FormType }) {
   return (
     <Drawer
       open={!!formType}
-      direction="bottom"
+      direction="right"
       enableOverlay={true}
-      size="80vw"
+      size="40vw"
       duration={1000}
     >
       <div className="side-drawer">
