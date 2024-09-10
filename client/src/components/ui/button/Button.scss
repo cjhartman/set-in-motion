@@ -37,6 +37,17 @@
     }
   }
 
+  &-none {
+    border: none;
+    background-color: none;
+    color: #c2d3be;
+
+    &:hover {
+      border-radius: 100%;
+      background-color: rgba(#aaa, 0.25);
+    }
+  }
+
   .has-icon {
     padding-left: 8px;
   }

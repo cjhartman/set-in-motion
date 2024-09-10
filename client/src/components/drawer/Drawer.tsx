@@ -1,44 +1,57 @@
-import React, { useState } from "react";
 import { FormType } from "../../types/formType";
 import TaskForm from "../forms/TaskForm";
 import ListForm from "../forms/ListForm";
 import Drawer from "react-modern-drawer";
+import "react-modern-drawer/dist/index.css";
+import { useDispatch } from "react-redux";
+import { setFormType, toggleDrawer } from "../../reducers/sideDrawerReducer";
+import "./Drawer.scss";
+import Button from "../ui/button/Button";
 
-const SideDrawer = ({
-  formType,
-  onCancel,
-}: {
-  formType: FormType;
-  onCancel: () => {};
-}) => {
+function SideDrawer({ formType }: { formType: FormType }) {
   let formContent;
 
-  const [isOpen, setIsOpen] = useState(false);
+  /**
+   * Side Drawer Functionality
+   */
+  const dispatch = useDispatch();
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
+  const handleCloseDrawer = () => {
+    dispatch(setFormType(FormType.None));
+    dispatch(toggleDrawer(false));
   };
 
   switch (formType) {
     case FormType.Task:
-      formContent = <TaskForm onCancel={onCancel} />;
+      formContent = <TaskForm onCancel={handleCloseDrawer} />;
       break;
     case FormType.List:
-      formContent = <ListForm onCancel={onCancel} />;
+      formContent = <ListForm onCancel={handleCloseDrawer} />;
       break;
     default:
       formContent = null;
   }
 
   return (
-    <Drawer open={isOpen} direction="right" className="side-drawer">
-      {formContent}
+    <Drawer
+      open={!!formType}
+      direction="bottom"
+      enableOverlay={true}
+      size="80vw"
+      duration={1000}
+    >
+      <div className="side-drawer">
+        <div className="side-drawer-header">
+          <Button
+            btnStyle="none"
+            icon="fa-x"
+            onClick={handleCloseDrawer}
+          ></Button>
+        </div>
+        {formContent}
+      </div>
     </Drawer>
   );
-};
+}
 
 export default SideDrawer;

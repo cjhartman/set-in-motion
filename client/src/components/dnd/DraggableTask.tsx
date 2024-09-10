@@ -4,20 +4,25 @@ import { useDrag } from "react-dnd";
 import "./DraggableTask.scss";
 import Button from "../ui/button/Button";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  setFormType,
+  toggleDrawer,
+  setTaskValue,
+} from "../../reducers/sideDrawerReducer";
+import { FormType } from "../../types/formType";
+import { Task } from "../../types/task";
 
 const API_URL = "http://localhost:4000/api/tasks";
 
 function DraggableTask({
   listId,
-  id,
-  title,
+  task,
   addNewTask,
   onCancel,
 }: {
   listId?: number;
-  id?: number;
-  title?: string;
+  task?: Task;
   addNewTask?: boolean;
   onCancel?: any;
 }) {
@@ -28,7 +33,7 @@ function DraggableTask({
 
   const [{ isDragging }, drag] = useDrag({
     type: "task",
-    item: { id },
+    item: { id: task?.id },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -63,11 +68,12 @@ function DraggableTask({
   /**
    * Side Drawer Functionality
    */
-  const isSideDrawerOpen = useSelector((state: any) => state.sideDrawer);
   const dispatch = useDispatch();
 
   const handleOpenDrawer = () => {
-    dispatch({ type: "OPEN_SIDE_DRAWER" });
+    dispatch(setFormType(FormType.Task));
+    dispatch(toggleDrawer(true));
+    dispatch(setTaskValue(task));
   };
 
   return (
@@ -79,7 +85,7 @@ function DraggableTask({
       ${isDragging ? "dragging" : ""}`}
           onClick={handleOpenDrawer}
         >
-          <div>{title}</div>
+          <div>{task?.title}</div>
         </div>
       ) : (
         <div

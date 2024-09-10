@@ -80,11 +80,10 @@ export default function Lists({
           key={list.id}
           onDrop={() => console.log("Item Dropped")}
         >
-          {list?.tasks?.map((taskId) => (
+          {list?.tasks?.map((task) => (
             <DraggableTask
-              title={taskId.title}
-              key={taskId.id}
-              id={taskId.id}
+              task={task}
+              key={task.id}
               listId={list?.id as number}
             ></DraggableTask>
           ))}

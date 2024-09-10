@@ -1,12 +1,20 @@
-import React from "react";
-import { Task } from "../../types/task";
+import { useSelector } from "react-redux";
+import EditableText from "../ui/editable-text/EditableText";
+import { SideDrawerState } from "../../types/sideDrawer";
+import { FaPenNib } from "react-icons/fa";
+import "./TaskForm.scss";
 
-const TaskForm = ({ task, onCancel }: { task?: Task; onCancel: () => {} }) => {
+function TaskForm({ onCancel }: { onCancel: any }) {
+  const task = useSelector((state: SideDrawerState) => state.task);
+
   return (
-    <div>
-      <button onClick={onCancel}>Cancel</button>
+    <div className="task">
+      <div className="task--title">
+        <FaPenNib size={18} />
+        <EditableText value={task?.title} size="large"></EditableText>
+      </div>
     </div>
   );
-};
+}
 
 export default TaskForm;

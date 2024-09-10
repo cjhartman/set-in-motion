@@ -1,0 +1,14 @@
+.EZDrawer .EZDrawer__container {
+  background: #3b3b3b;
+  border-radius: 30px 30px 0 0;
+
+  .side-drawer {
+    padding: 20px;
+
+    &-header {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}

@@ -1,14 +1,23 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-module.exports = {
+// webpack.config.js
+const config = {
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true, // Enable CSS Modules
+              localIdentName: "[name]__[local]___[hash:base64:5]", // Custom naming convention
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
 };
+
+export default config;

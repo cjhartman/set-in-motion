@@ -1,5 +1,5 @@
 import "./Button.scss";
-import { FaEllipsisVertical, FaPlus } from "react-icons/fa6";
+import { FaEllipsisVertical, FaPlus, FaXmark } from "react-icons/fa6";
 
 function Button({
   text,
@@ -9,7 +9,7 @@ function Button({
   onClick,
   ...rest
 }: {
-  btnStyle: "primary" | "outline";
+  btnStyle: "primary" | "outline" | "none";
   text?: string;
   disabled?: boolean;
   icon?: any;
@@ -18,11 +18,13 @@ function Button({
   const buttonStyles = {
     primary: "btn-primary",
     outline: "btn-outline",
+    none: "btn-none",
   };
 
   const iconMap: any = {
     "fa-plus": <FaPlus />,
     "fa-ellipsis": <FaEllipsisVertical />,
+    "fa-x": <FaXmark />,
   };
 
   const spanClassName = icon ? "has-icon" : "";
