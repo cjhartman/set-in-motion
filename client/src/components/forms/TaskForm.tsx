@@ -8,8 +8,8 @@ function TaskForm({ onCancel }: { onCancel: any }) {
   const task = useSelector((state: SideDrawerState) => state.task);
 
   return (
-    <div className="task">
-      <div className="task--title">
+    <div className="task-form">
+      <div className="task-form--title">
         <FaPenNib size={18} />
         <EditableText value={task?.title} size="large"></EditableText>
       </div>
